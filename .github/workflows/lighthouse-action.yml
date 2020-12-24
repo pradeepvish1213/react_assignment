@@ -1,0 +1,23 @@
+name: Build Project and LH Report
+on: [push]
+
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      uses: action/checkout@v1
+    - name: Use Node js 10.x
+      uses: actions/setup-node@v1
+      with:
+      node-version: 10.x
+    - name: Npm INstall Build
+    run: |
+      yarn
+      npm run build
+    -name: Run Lighthouse CI
+    run: |
+    npm install -g @lhci/cli@0.3.x
+    lhci autorun
+    env: 
+      LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
