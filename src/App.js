@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
         <h2 className={'center'}>Assigment</h2>
+        Pradeep
         <ChartComponent/>
     </div>
   );
