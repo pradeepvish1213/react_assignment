@@ -1,23 +1,9 @@
-name: Build Project and LH Report
-on: [push]
-
-jobs:
-  lhci:
-    name: Lighthouse CI
-    runs-on: ubuntu-latest
-    steps:
-      uses: action/checkout@v1
-    - name: Use Node js 10.x
-      uses: actions/setup-node@v1
-      with:
-      node-version: 10.x
-    - name: Npm INstall Build
-    run: |
-      yarn
-      npm run build
-    -name: Run Lighthouse CI
-    run: |
-    npm install -g @lhci/cli@0.3.x
-    lhci autorun
-    env: 
-      LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
+- name: Codacy Coverage Reporter
+  # You may pin to the exact commit or the version.
+  # uses: codacy/codacy-coverage-reporter-action@53ebfe140c89720a8234b8ea4fabaf6de5736092
+  uses: codacy/codacy-coverage-reporter-action@0.2.0
+  with:
+    # Project token for the Codacy project you want to send coverage information
+    project-token: 
+    # Optional comma separated list of coverage reports to send to Codacy
+    coverage-reports: # optional, default is 
